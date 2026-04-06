@@ -143,8 +143,8 @@ nav.scrolled{border-bottom-color:rgba(212,221,216,0.7);}
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:78px;position:relative;overflow:hidden;}
 
-/* Breath circle fills the left column exactly; bc-rings centre themselves inside it */
-.hero-breath{position:absolute;left:0;top:78px;width:50%;height:calc(100% - 78px);pointer-events:none;z-index:1;}
+/* Breath circle sits inside hero-l; bc-rings self-centre via top:50%/left:50% */
+.hero-breath{position:absolute;inset:0;pointer-events:none;z-index:0;}
 .bc-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.18);top:50%;left:50%;transform:translate(-50%,-50%);animation:breatheRing 6s ease-in-out infinite;}
 .bc-ring:nth-child(1){width:420px;height:420px;animation-delay:0s;}
 .bc-ring:nth-child(2){width:320px;height:320px;border-color:rgba(201,168,76,0.22);animation-delay:0.4s;}
@@ -339,7 +339,7 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
 @media(max-width:960px){
   nav{padding:20px 24px;}.nav-links{gap:22px;}
   .hero{grid-template-columns:1fr;min-height:auto;}
-  .hero-breath{width:100%;top:96px;height:calc(100% - 96px);opacity:0.45;}
+  .hero-breath{opacity:0.45;}
   .hero-l{padding:96px 24px 48px;}
   .hero-r{padding:0 24px 60px;}
   .arch-photo{height:360px;}.arch-frame{width:280px;}
@@ -374,16 +374,15 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
 <!-- HERO -->
 <section class="hero">
 
-  <!-- Breath circle — behind hero text -->
-  <div class="hero-breath">
-    <div class="bc-ring" style="width:420px;height:420px;"></div>
-    <div class="bc-ring" style="width:310px;height:310px;border-color:rgba(201,168,76,0.22);animation-delay:0.5s;"></div>
-    <div class="bc-ring" style="width:200px;height:200px;border-color:rgba(201,168,76,0.3);animation-delay:1s;"></div>
-    <div class="bc-ring" style="width:100px;height:100px;border-color:rgba(201,168,76,0.38);animation-delay:1.5s;"></div>
-    <div class="bc-centre"></div>
-  </div>
-
   <div class="hero-l">
+    <!-- Breath circle — inside hero-l so it self-centres perfectly -->
+    <div class="hero-breath">
+      <div class="bc-ring" style="width:420px;height:420px;"></div>
+      <div class="bc-ring" style="width:310px;height:310px;border-color:rgba(201,168,76,0.22);animation-delay:0.5s;"></div>
+      <div class="bc-ring" style="width:200px;height:200px;border-color:rgba(201,168,76,0.3);animation-delay:1s;"></div>
+      <div class="bc-ring" style="width:100px;height:100px;border-color:rgba(201,168,76,0.38);animation-delay:1.5s;"></div>
+      <div class="bc-centre"></div>
+    </div>
     <p class="ey" style="opacity:0;animation:fadeUp 1s 0.2s forwards;">Healing · Coaching · Mentorship</p>
     <h1 class="hero-title">
       The woman you<br/>are becoming is<br/><em>waiting</em> <span class="gw">for you.</span>
@@ -473,7 +472,7 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
 
 <!-- TESTIMONIAL STRIP -->
 <div class="testi-strip fi">
-  <p class="testi-strip-quote">I have had lots of coaching in the past that has not got to the root cause of my issues like Jess has.</p>
+  <p class="testi-strip-quote">I have had lots of coaching in the past that has not got to the root cause of my issues like Jess has.&#8221;</p>
   <p class="testi-strip-attr">✦ &nbsp; Client Review &nbsp; ✦</p>
 </div>
 
@@ -591,9 +590,9 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
   <p class="ey">Client stories</p>
   <h2 class="testi-title">What women are <em>saying</em></h2>
   <div class="testi-grid">
-    <div class="testi"><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><p class="testi-quote">I feel Jess has helped me get a better version of myself. She is knowledgeable, focused and helps you achieve more than you thought possible. I would thoroughly recommend her."</p><div class="testi-foot"><p class="testi-name">Client Review</p></div></div>
-    <div class="testi"><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><p class="testi-quote">Jess made me feel completely relaxed and comfortable. I felt understood and able to completely open up. I have had lots of coaching in the past that has not got to the root cause of my issues like Jess has."</p><div class="testi-foot"><p class="testi-name">Client Review</p></div></div>
-    <div class="testi"><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><p class="testi-quote">I have always had a vision for my life, but it has always been a far off dream. Now it feels like it is just a few steps away and it is unfolding before me effortlessly."</p><div class="testi-foot"><p class="testi-name">Client Review</p></div></div>
+    <div class="testi"><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><p class="testi-quote">I feel Jess has helped me get a better version of myself. She is knowledgeable, focused and helps you achieve more than you thought possible. I would thoroughly recommend her.&#8221;</p><div class="testi-foot"><p class="testi-name">Client Review</p></div></div>
+    <div class="testi"><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><p class="testi-quote">Jess made me feel completely relaxed and comfortable. I felt understood and able to completely open up. I have had lots of coaching in the past that has not got to the root cause of my issues like Jess has.&#8221;</p><div class="testi-foot"><p class="testi-name">Client Review</p></div></div>
+    <div class="testi"><div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><p class="testi-quote">I have always had a vision for my life, but it has always been a far off dream. Now it feels like it is just a few steps away and it is unfolding before me effortlessly.&#8221;</p><div class="testi-foot"><p class="testi-name">Client Review</p></div></div>
   </div>
 </section>
 
@@ -616,7 +615,7 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
   </svg>
   <div class="pull-quote fi">
     <span class="pull-mark">"</span>
-    <p class="pull-text">When the emotional weight lifts and your energy changes, everything starts to move differently. Your decisions become clearer. Your confidence grows. Your life begins to expand.</p>
+    <p class="pull-text">When the emotional weight lifts and your energy changes, everything starts to move differently. Your decisions become clearer. Your confidence grows. Your life begins to expand.&#8221;</p>
     <p class="pull-attr">✦ &nbsp; Jess Wakely &nbsp; ✦</p>
   </div>
 </div>
@@ -626,7 +625,7 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
 
 <!-- TESTIMONIAL STRIP (near CTA) -->
 <div class="testi-strip fi" style="background:var(--soft-white);">
-  <p class="testi-strip-quote">I have always had a vision for my life, but it has always been a far off dream. Now it feels like it is just a few steps away and it is unfolding before me effortlessly.</p>
+  <p class="testi-strip-quote">I have always had a vision for my life, but it has always been a far off dream. Now it feels like it is just a few steps away and it is unfolding before me effortlessly.&#8221;</p>
   <p class="testi-strip-attr">✦ &nbsp; Client Review &nbsp; ✦</p>
 </div>
 
