@@ -143,8 +143,8 @@ nav.scrolled{border-bottom-color:rgba(212,221,216,0.7);}
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:78px;position:relative;overflow:hidden;}
 
-/* Breath circle sits centred behind the hero left column */
-.hero-breath{position:absolute;width:420px;height:420px;left:25%;top:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:1;}
+/* Breath circle fills the left column exactly; bc-rings centre themselves inside it */
+.hero-breath{position:absolute;left:0;top:78px;width:50%;height:calc(100% - 78px);pointer-events:none;z-index:1;}
 .bc-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.18);top:50%;left:50%;transform:translate(-50%,-50%);animation:breatheRing 6s ease-in-out infinite;}
 .bc-ring:nth-child(1){width:420px;height:420px;animation-delay:0s;}
 .bc-ring:nth-child(2){width:320px;height:320px;border-color:rgba(201,168,76,0.22);animation-delay:0.4s;}
@@ -339,7 +339,7 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
 @media(max-width:960px){
   nav{padding:20px 24px;}.nav-links{gap:22px;}
   .hero{grid-template-columns:1fr;min-height:auto;}
-  .hero-breath{left:50%;opacity:0.45;}
+  .hero-breath{width:100%;top:96px;height:calc(100% - 96px);opacity:0.45;}
   .hero-l{padding:96px 24px 48px;}
   .hero-r{padding:0 24px 60px;}
   .arch-photo{height:360px;}.arch-frame{width:280px;}
