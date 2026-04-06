@@ -143,8 +143,8 @@ nav.scrolled{border-bottom-color:rgba(212,221,216,0.7);}
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:78px;position:relative;overflow:hidden;}
 
-/* Breath circle sits inside hero-l; bc-rings self-centre via top:50%/left:50% */
-.hero-breath{position:absolute;inset:0;pointer-events:none;z-index:0;}
+/* Breath circle shares grid cell 1/1 with hero-l — rings self-centre via top:50%/left:50% */
+.hero-breath{grid-column:1;grid-row:1;position:relative;pointer-events:none;}
 .bc-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.18);top:50%;left:50%;transform:translate(-50%,-50%);animation:breatheRing 6s ease-in-out infinite;}
 .bc-ring:nth-child(1){width:420px;height:420px;animation-delay:0s;}
 .bc-ring:nth-child(2){width:320px;height:320px;border-color:rgba(201,168,76,0.22);animation-delay:0.4s;}
@@ -152,7 +152,7 @@ nav.scrolled{border-bottom-color:rgba(212,221,216,0.7);}
 .bc-ring:nth-child(4){width:120px;height:120px;border-color:rgba(201,168,76,0.35);animation-delay:1.2s;}
 .bc-centre{position:absolute;width:40px;height:40px;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.45),rgba(201,168,76,0.05));animation:breatheRing 6s ease-in-out infinite 1.6s;}
 
-.hero-l{display:flex;flex-direction:column;justify-content:center;padding:80px 64px 80px 80px;position:relative;z-index:2;}
+.hero-l{grid-column:1;grid-row:1;display:flex;flex-direction:column;justify-content:center;padding:80px 64px 80px 80px;position:relative;z-index:2;}
 .hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,4.8vw,5.4rem);line-height:1.03;color:var(--charcoal);margin-bottom:28px;opacity:0;animation:fadeUp 1.1s 0.4s forwards;}
 .hero-title em{font-style:italic;color:var(--forest);}
 .hero-title .gw{color:var(--gold);}
@@ -160,7 +160,7 @@ nav.scrolled{border-bottom-color:rgba(212,221,216,0.7);}
 .hero-btns{display:flex;gap:18px;align-items:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1.1s 0.8s forwards;}
 
 /* ── ARCH PHOTO ── */
-.hero-r{position:relative;display:flex;justify-content:center;align-items:center;padding:60px 60px 60px 20px;z-index:2;}
+.hero-r{grid-column:2;grid-row:1;position:relative;display:flex;justify-content:center;align-items:center;padding:60px 60px 60px 20px;z-index:2;}
 .arch-frame{position:relative;width:340px;opacity:0;animation:fadeUp 1.2s 0.5s forwards;}
 .arch-photo{width:100%;height:500px;border-radius:200px 200px 32px 32px;background:var(--forest-pale);border:2px solid var(--forest-mid);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--forest);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;overflow:hidden;position:relative;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1),box-shadow 0.5s;box-shadow:0 24px 70px rgba(61,107,69,0.15);}
 .arch-photo:hover{transform:translateY(-6px);box-shadow:0 40px 90px rgba(61,107,69,0.22);}
@@ -374,15 +374,16 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
 <!-- HERO -->
 <section class="hero">
 
+  <!-- Breath circle — grid-column:1/grid-row:1 overlaps hero-l exactly -->
+  <div class="hero-breath">
+    <div class="bc-ring" style="width:420px;height:420px;"></div>
+    <div class="bc-ring" style="width:310px;height:310px;border-color:rgba(201,168,76,0.22);animation-delay:0.5s;"></div>
+    <div class="bc-ring" style="width:200px;height:200px;border-color:rgba(201,168,76,0.3);animation-delay:1s;"></div>
+    <div class="bc-ring" style="width:100px;height:100px;border-color:rgba(201,168,76,0.38);animation-delay:1.5s;"></div>
+    <div class="bc-centre"></div>
+  </div>
+
   <div class="hero-l">
-    <!-- Breath circle — inside hero-l so it self-centres perfectly -->
-    <div class="hero-breath">
-      <div class="bc-ring" style="width:420px;height:420px;"></div>
-      <div class="bc-ring" style="width:310px;height:310px;border-color:rgba(201,168,76,0.22);animation-delay:0.5s;"></div>
-      <div class="bc-ring" style="width:200px;height:200px;border-color:rgba(201,168,76,0.3);animation-delay:1s;"></div>
-      <div class="bc-ring" style="width:100px;height:100px;border-color:rgba(201,168,76,0.38);animation-delay:1.5s;"></div>
-      <div class="bc-centre"></div>
-    </div>
     <p class="ey" style="opacity:0;animation:fadeUp 1s 0.2s forwards;">Healing · Coaching · Mentorship</p>
     <h1 class="hero-title">
       The woman you<br/>are becoming is<br/><em>waiting</em> <span class="gw">for you.</span>
