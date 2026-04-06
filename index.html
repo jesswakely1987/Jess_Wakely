@@ -143,8 +143,8 @@ nav.scrolled{border-bottom-color:rgba(212,221,216,0.7);}
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:78px;position:relative;overflow:hidden;}
 
-/* Breath circle shares grid cell 1/1 with hero-l — rings self-centre via top:50%/left:50% */
-.hero-breath{grid-column:1;grid-row:1;position:relative;pointer-events:none;}
+/* Breath circle: grid cell 1/1, explicit size, centred by grid alignment */
+.hero-breath{grid-column:1;grid-row:1;width:420px;height:420px;align-self:center;justify-self:center;position:relative;pointer-events:none;z-index:1;}
 .bc-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.18);top:50%;left:50%;transform:translate(-50%,-50%);animation:breatheRing 6s ease-in-out infinite;}
 .bc-ring:nth-child(1){width:420px;height:420px;animation-delay:0s;}
 .bc-ring:nth-child(2){width:320px;height:320px;border-color:rgba(201,168,76,0.22);animation-delay:0.4s;}
