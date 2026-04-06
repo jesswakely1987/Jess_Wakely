@@ -143,8 +143,15 @@ nav.scrolled{border-bottom-color:rgba(212,221,216,0.7);}
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:78px;position:relative;overflow:hidden;}
 
-/* Breath circle: grid cell 1/1, explicit size, centred by grid alignment */
-.hero-breath{grid-column:1;grid-row:1;width:420px;height:420px;align-self:center;justify-self:center;position:relative;pointer-events:none;z-index:1;}
+/* Breath circle: flexbox centres the SVG in the left column cell */
+.hero-breath{grid-column:1;grid-row:1;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1;}
+.bc-svg{width:420px;height:420px;flex-shrink:0;overflow:visible;}
+.bc-svg circle{transform-origin:0 0;}
+.bc-svg circle:nth-child(1){animation:breatheRing 6s ease-in-out infinite 0s;}
+.bc-svg circle:nth-child(2){animation:breatheRing 6s ease-in-out infinite 0.5s;}
+.bc-svg circle:nth-child(3){animation:breatheRing 6s ease-in-out infinite 1s;}
+.bc-svg circle:nth-child(4){animation:breatheRing 6s ease-in-out infinite 1.5s;}
+.bc-svg circle:nth-child(5){animation:breatheRing 6s ease-in-out infinite 1.6s;}
 .bc-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.18);top:50%;left:50%;transform:translate(-50%,-50%);animation:breatheRing 6s ease-in-out infinite;}
 .bc-ring:nth-child(1){width:420px;height:420px;animation-delay:0s;}
 .bc-ring:nth-child(2){width:320px;height:320px;border-color:rgba(201,168,76,0.22);animation-delay:0.4s;}
@@ -374,13 +381,15 @@ footer{background:#2F4A35;padding:56px 80px;display:grid;grid-template-columns:1
 <!-- HERO -->
 <section class="hero">
 
-  <!-- Breath circle — grid-column:1/grid-row:1 overlaps hero-l exactly -->
+  <!-- Breath circle — SVG circles drawn from centre point, flexbox-centred -->
   <div class="hero-breath">
-    <div class="bc-ring" style="width:420px;height:420px;"></div>
-    <div class="bc-ring" style="width:310px;height:310px;border-color:rgba(201,168,76,0.22);animation-delay:0.5s;"></div>
-    <div class="bc-ring" style="width:200px;height:200px;border-color:rgba(201,168,76,0.3);animation-delay:1s;"></div>
-    <div class="bc-ring" style="width:100px;height:100px;border-color:rgba(201,168,76,0.38);animation-delay:1.5s;"></div>
-    <div class="bc-centre"></div>
+    <svg class="bc-svg" viewBox="-210 -210 420 420" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="0" cy="0" r="210" stroke="rgba(201,168,76,0.18)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="155" stroke="rgba(201,168,76,0.22)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="100" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="50" stroke="rgba(201,168,76,0.38)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="20" fill="rgba(201,168,76,0.25)" stroke="none"/>
+    </svg>
   </div>
 
   <div class="hero-l">
